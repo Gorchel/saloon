@@ -92,6 +92,8 @@ $app->register(\App\Providers\LogServiceProvider::class);
 |
 */
 
+$app->configure('type');
+
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {

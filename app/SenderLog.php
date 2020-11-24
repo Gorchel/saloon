@@ -8,12 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class Entry extends Model
+class SenderLog extends Model
 {
-    public $table = 'entries';
+    public $table = 'sender_log';
 
-    public function sender_log()
-    {
-        return $this->hasMany(SenderLog::class, 'entry_id', 'id');
-    }
 }
