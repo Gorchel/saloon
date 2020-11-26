@@ -3,6 +3,7 @@
 namespace App\Classes\Integrations\BotHandler;
 
 use Illuminate\Support\Facades\Log;
+use App\Classes\Integrations\Sender\Sender;
 
 /**
  * Class SenderManager
@@ -31,6 +32,7 @@ class SenderManager
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public function handle()
     {
@@ -41,13 +43,12 @@ class SenderManager
             return false;
         }
 
-        $senderLogger = new SenderLogger($this->type);
+        $sender = new Sender($this->type);
 
         foreach ($collection as $entry) {
             //Отправляем
 
-            //Сохраняем в лог
-            $senderLogger->send($entry);
+            $sender->send($entry);
         }
     }
 }

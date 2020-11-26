@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
- $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +93,7 @@ $app->register(\App\Providers\LogServiceProvider::class);
 */
 
 $app->configure('type');
+$app->configure('clients');
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',

@@ -56,8 +56,7 @@ class YclientsManager
 
         $entryDTO = $this->storeEntry($params);
 
-        dd($entryDTO->getExternalId());
-        //Сохраняем запись
+        return true;
     }
 
     /**
@@ -75,6 +74,10 @@ class YclientsManager
         return $dto;
     }
 
+    /**
+     * @param array $params
+     * @return EntryDTO
+     */
     protected function storeEntry(array $params)
     {
         $entry = Entry::where('external_id', $params['external_id'])

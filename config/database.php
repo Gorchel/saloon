@@ -59,7 +59,7 @@ return [
             'strict' => false,
             'engine' => null,
         ],
-        
+
         'remote_mysql' => [
             'driver' => 'mysql',
             'host' => env('REMOTEDB_HOST', 'localhost'),
@@ -88,6 +88,4 @@ return [
     */
 
     'migrations' => 'migrations',
-
-
 ];
