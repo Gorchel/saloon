@@ -10,6 +10,7 @@ class YclientsController extends Controller
 {
     public function webhook(Request $request)
     {
+        \Log::info(json_encode($request->all()));
         $validation = new YclientsDataValidation;
         if (!$validation->validation($request)) {
             return;
