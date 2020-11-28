@@ -16,4 +16,4 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/yclients/webhook', ['uses' => 'YclientsController@webhook']);
+$router->any('/yclients/webhook', ['uses' => 'YclientsController@webhook']);
