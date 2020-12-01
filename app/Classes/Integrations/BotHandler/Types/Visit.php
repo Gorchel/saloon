@@ -60,7 +60,6 @@ class Visit implements TypeInterface
         $text .= "Если не сможете найти, позвоните: +7 (495) 933-44-74 🎡\n\n ";
         $text .= "С Уважением, Legend City✨`;";
 
-        dd($text);
         return $text;
     }
 }
