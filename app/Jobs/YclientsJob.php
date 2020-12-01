@@ -21,7 +21,7 @@ class YclientsJob extends Job implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct($request)
     {
         $this->request = $request;
     }
@@ -33,7 +33,7 @@ class YclientsJob extends Job implements ShouldQueue
      */
     public function handle()
     {
-        $yclientsManager = new YclientsManager($this->request->all());
+        $yclientsManager = new YclientsManager($this->request);
         $yclientsManager->handle();
     }
 }

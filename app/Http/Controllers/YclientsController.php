@@ -17,7 +17,7 @@ class YclientsController extends Controller
             return;
         }
 
-        $job = (new YclientsJob($request));
+        $job = (new YclientsJob($request->all()));
         dispatch($job);
     }
 }
