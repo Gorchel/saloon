@@ -53,7 +53,7 @@ class Feedback implements TypeInterface
     {
         $visitedDate = Carbon::parse($entry->visited_date, 'Africa/Nairobi');
 
-        $text = "@HSM@\nlegend_city_call_meet|Сообщение от Legend City🌃\n\n ".(!empty($entry->user) ? $entry->user->name : '').", добрый день!\n\n";
+        $text = "@HSM@\nlegend_city_feedback\nСообщение от Legend City🌃\n\n ".(!empty($entry->user) ? $entry->user->name : '').", добрый день!\n\n";
         $text .= "Нам очень важно Ваше мнение о сервисе салона Legend Сity от ".$visitedDate->format('d.m').", будем рады сделать его ещё лучше в следующий раз!✨ \n\n";
         $text .= "Оцените от 1 до 5:\n";
         $text .= "🍃На сколько Вам понравилось посещение салона?\n";
