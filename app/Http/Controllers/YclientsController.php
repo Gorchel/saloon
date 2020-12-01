@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\YclientsJob;
 use Illuminate\Http\Request;
 use App\Classes\Integrations\Yclients\YclientsManager;
 use App\Classes\Integrations\Yclients\YclientsDataValidation;
@@ -16,7 +17,7 @@ class YclientsController extends Controller
             return;
         }
 
-        $yclientsManager = new YclientsManager($request->all());
-        $yclientsManager->handle();
+        $job = (new YclientsJob($request));
+        dispatch($job);
     }
 }
