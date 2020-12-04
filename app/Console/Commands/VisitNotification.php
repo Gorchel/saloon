@@ -20,7 +20,7 @@ class VisitNotification extends Command
      *
      * @var string
      */
-    protected $signature = "visit:notification";
+    protected $signature = "visit:notification {count?}";
 
     /**
      * The console command description.
@@ -38,6 +38,6 @@ class VisitNotification extends Command
     public function handle()
     {
         $senderManager = new SenderManager('visit');
-        $senderManager->handle();
+        $senderManager->handle($this->argument('count'));
     }
 }

@@ -20,7 +20,7 @@ class FeedbackNotification extends Command
      *
      * @var string
      */
-    protected $signature = "feedback:notification";
+    protected $signature = "feedback:notification {count?}";
 
     /**
      * The console command description.
@@ -38,6 +38,6 @@ class FeedbackNotification extends Command
     public function handle()
     {
         $senderManager = new SenderManager('feedback');
-        $senderManager->handle();
+        $senderManager->handle($this->argument('count'));
     }
 }
