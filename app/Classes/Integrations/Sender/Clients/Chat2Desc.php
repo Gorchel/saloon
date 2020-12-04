@@ -25,7 +25,7 @@ class Chat2Desc implements ClientInterface
      */
     public function send(string $template, array $option = []): bool
     {
-        $chat2descClientData = $this->getChat2DescClient($option['phone']);
+        $chat2descClientData = $this->getChat2DescClient(str_replace('+','',$option['phone']));
 
         if ($chat2descClientData['status'] != 'success' || empty($chat2descClientData['data'])) {
             \Log::error('Chat2Desc not found client by phone '.$option['phone']);
