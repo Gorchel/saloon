@@ -44,6 +44,7 @@ class Visit implements TypeInterface
         $now = Carbon::now('Africa/Nairobi');
 
         $query->whereRaw('DATE(DATE_SUB(`visited_date`, INTERVAL 1 DAY)) <= "'.$now->format('Y-m-d').'"');
+        $query->where($now->format('Y-m-d H:i:s'),'>=', 'visited_date');
     }
 
     /**
