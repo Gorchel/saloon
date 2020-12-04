@@ -42,7 +42,7 @@ class Feedback implements TypeInterface
     {
         $now = Carbon::now('Africa/Nairobi');
 
-        $query->whereRaw('DATE(DATE_ADD(`visited_date`, INTERVAL 1 DAY)) <= "'.$now->format('Y-m-d').'"');
+        $query->whereRaw('DATE(DATE_ADD(`visited_date`, INTERVAL '.config('type.feedback.day_after_send').' DAY)) <= "'.$now->format('Y-m-d').'"');
     }
 
     /**
