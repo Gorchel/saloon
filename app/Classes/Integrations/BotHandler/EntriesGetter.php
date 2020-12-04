@@ -14,8 +14,9 @@ use App\Entry;
  */
 class EntriesGetter
 {
+
     /**
-     * @var Feedback
+     * @var TypeInterface
      */
     protected $type;
 
@@ -31,7 +32,7 @@ class EntriesGetter
     /**
      * @return bool|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function collection()
+    public function collection($count)
     {
         if (!$this->type->checkTime()) {
             return false;
@@ -46,6 +47,10 @@ class EntriesGetter
             $query->where('type','=', $this->type->getTypeName());
         });
 
-        return $query->get();
+        if (!empty($count)) {
+            $query->limit($count);
+        }
+
+        return $query->toSql();
     }
 }

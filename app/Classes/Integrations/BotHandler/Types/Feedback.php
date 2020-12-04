@@ -27,7 +27,7 @@ class Feedback implements TypeInterface
 
         if (
             $now->hour >= config('type.feedback.start_sending_hour') &&
-            $now->hour >= config('type.feedback.finish_sending_hour')
+            $now->hour <= config('type.feedback.finish_sending_hour')
         ) {
             return true;
         }

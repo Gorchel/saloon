@@ -34,10 +34,10 @@ class SenderManager
      * @return bool
      * @throws \Exception
      */
-    public function handle()
+    public function handle($count)
     {
         $entriesGetter = new EntriesGetter($this->type);
-        $collection = $entriesGetter->collection();
+        $collection = $entriesGetter->collection($count);
 
         if (empty($collection)) {
             return false;
@@ -47,7 +47,6 @@ class SenderManager
 
         foreach ($collection as $entry) {
             //Отправляем
-
             $sender->send($entry);
         }
     }

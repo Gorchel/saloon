@@ -28,7 +28,7 @@ class Visit implements TypeInterface
 
         if (
             $now->hour >= config('type.visit.start_sending_hour') &&
-            $now->hour >= config('type.visit.finish_sending_hour')
+            $now->hour <= config('type.visit.finish_sending_hour')
         ) {
             return true;
         }
