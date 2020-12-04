@@ -3,7 +3,7 @@
 return [
     'visit' => [
         'start_sending_hour' => '9',
-        'finish_sending_hour' => '15',
+        'finish_sending_hour' => '20',
     ],
     'feedback' => [
         'start_sending_hour' => '12',

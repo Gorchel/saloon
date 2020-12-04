@@ -4,6 +4,7 @@ namespace App\Classes\Integrations\BotHandler;
 
 use Illuminate\Support\Facades\Log;
 use App\SenderLog;
+use Carbon\Carbon;
 use App\Entry;
 use App\Classes\Integrations\BotHandler\Types\TypeInterface;
 
@@ -34,7 +35,20 @@ class SenderLogger
     {
         $model = new SenderLog;
         $model->entry_id = $entry->id;
+        $model->user_id = $entry->user_id;
         $model->type = $this->type->getTypeName();
         $model->save();
+    }
+
+    /**
+     * @param int $user_id
+     * @return mixed
+     */
+    public function checkLog(int $user_id)
+    {
+        return SenderLog::where('user_id', $user_id)
+            ->where('type', $this->type->getTypeName())
+            ->whereDate('created_at', Carbon::now('Africa/Nairobi')->format('Y-m-d'))
+            ->first();
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Bus\Queueable;
 use App\Entry;
+use App\SenderLog;
 
 class SendingJob extends Job implements ShouldQueue
 {
@@ -40,12 +41,22 @@ class SendingJob extends Job implements ShouldQueue
      */
     public function handle()
     {
-        $template = $this->templateType->getTemplate($this->entry);
-
         if (empty($this->entry->user))
         {
             \Log::error('SendingJob not fount user by entry #'.$this->entry->id);
         }
+
+        //проверка отправленного сообщения
+        if (!empty($this->senderLog->checkLog($this->entry->user->id))) {
+            \Log::error('SendingJob sms by user is already sending #'.$this->entry->id);
+            $this->senderLog->send($this->entry);
+
+            return;
+        }
+
+        $template = $this->templateType->getTemplate($this->entry);
+
+
 
         $option = [
             'phone' => $this->entry->user->phone,
