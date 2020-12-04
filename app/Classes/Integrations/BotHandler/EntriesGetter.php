@@ -51,6 +51,6 @@ class EntriesGetter
             $query->limit($count);
         }
 
-        return $query->toSql();
+        return $query->get();
     }
 }
